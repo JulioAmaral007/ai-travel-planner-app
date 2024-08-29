@@ -1,21 +1,42 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Tabs } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
+import { TabBar } from '@/components/TabBar'
+import { Tabs } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
 
 export default function TabLayout() {
   return (
     <>
-      <StatusBar style="inverted" />
-      
-      <Tabs screenOptions={{ tabBarActiveTintColor: 'blue' }}>
+      <StatusBar style="dark" />
+
+      <Tabs tabBar={(props) => <TabBar {...props} />}>
         <Tabs.Screen
-          name="index"
+          name="home"
           options={{
+            headerShown: false,
             title: 'Home',
-            tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />,
+          }}
+        />
+        <Tabs.Screen
+          name="explore"
+          options={{
+            headerShown: false,
+            title: 'Explorar',
+          }}
+        />
+        <Tabs.Screen
+          name="profile"
+          options={{
+            headerShown: false,
+            title: 'Perfil',
+          }}
+        />
+        <Tabs.Screen
+          name="settings"
+          options={{
+            headerShown: false,
+            title: 'Config.',
           }}
         />
       </Tabs>
     </>
-  );
+  )
 }
