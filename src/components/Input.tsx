@@ -1,36 +1,25 @@
-import clsx from "clsx"
-import { ReactNode } from "react"
-import {
-  Platform,
-  TextInput,
-  TextInputProps,
-  View,
-  ViewProps,
-} from "react-native"
+import clsx from 'clsx'
+import { ReactNode } from 'react'
+import { Platform, TextInput, TextInputProps, View, ViewProps } from 'react-native'
 
-import { colors } from "@/styles/colors"
+import { colors } from '@/styles/colors'
 
-type Variants = "primary" | "secondary" | "tertiary"
+type Variants = 'primary' | 'secondary' | 'tertiary'
 
 type InputProps = ViewProps & {
   children: ReactNode
   variant?: Variants
 }
 
-function Input({
-  children,
-  variant = "primary",
-  className,
-  ...rest
-}: InputProps) {
+function Input({ children, variant = 'primary', className, ...rest }: InputProps) {
   return (
     <View
       className={clsx(
-        "min-h-16 max-h-16 flex-row items-center gap-2",
+        'min-h-16 max-h-16 flex-row items-center gap-2',
         {
-          "h-14 px-4 rounded-lg border border-zinc-800": variant !== "primary",
-          "bg-zinc-950": variant === "secondary",
-          "bg-zinc-900": variant === "tertiary",
+          'h-14 px-4 rounded-lg border border-zinc-800': variant !== 'primary',
+          'bg-zinc-950': variant === 'secondary',
+          'bg-zinc-900': variant === 'tertiary',
         },
         className
       )}
@@ -47,7 +36,7 @@ function Field({ ...rest }: TextInputProps) {
       className="flex-1 text-white text-lg font-regular"
       placeholderTextColor={colors.white}
       cursorColor={colors.white}
-      selectionColor={Platform.OS === "ios" ? colors.white : undefined}
+      selectionColor={Platform.OS === 'ios' ? colors.white : undefined}
       {...rest}
     />
   )

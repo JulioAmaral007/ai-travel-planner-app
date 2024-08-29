@@ -1,15 +1,9 @@
-import { createContext, useContext } from "react"
+import { createContext, useContext } from 'react'
 
-import clsx from "clsx"
-import {
-  ActivityIndicator,
-  Text,
-  TextProps,
-  TouchableOpacity,
-  TouchableOpacityProps,
-} from "react-native"
+import clsx from 'clsx'
+import { ActivityIndicator, Text, TextProps, TouchableOpacity, TouchableOpacityProps } from 'react-native'
 
-type Variants = "primary" | "secondary"
+type Variants = 'primary' | 'secondary'
 
 type ButtonProps = TouchableOpacityProps & {
   variant?: Variants
@@ -18,20 +12,14 @@ type ButtonProps = TouchableOpacityProps & {
 
 const ThemeContext = createContext<{ variant?: Variants }>({})
 
-function Button({
-  variant = "primary",
-  children,
-  isLoading,
-  className,
-  ...rest
-}: ButtonProps) {
+function Button({ variant = 'primary', children, isLoading, className, ...rest }: ButtonProps) {
   return (
     <TouchableOpacity
       className={clsx(
-        "h-11 flex-row items-center justify-center rounded-lg gap-2 px-2",
+        'h-11 flex-row items-center justify-center rounded-xl gap-2 px-2',
         {
-          "bg-orange-500": variant === "primary",
-          "bg-green-900": variant === "secondary",
+          'bg-green-50': variant === 'primary',
+          'bg-green-900': variant === 'secondary',
         },
         className
       )}
@@ -46,15 +34,19 @@ function Button({
   )
 }
 
-function Title({ children }: TextProps) {
+function Title({ children, className }: TextProps) {
   const { variant } = useContext(ThemeContext)
 
   return (
     <Text
-      className={clsx("text-base font-semibold", {
-        "text-white": variant === "primary",
-        "text-green-500": variant === "secondary",
-      })}
+      className={clsx(
+        'text-base font-semibold',
+        {
+          'text-white': variant === 'primary',
+          'text-green-500': variant === 'secondary',
+        },
+        className
+      )}
     >
       {children}
     </Text>
